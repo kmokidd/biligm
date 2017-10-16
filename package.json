@@ -1,0 +1,18 @@
+{
+  "name": "bili-listener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jquery-3.2.1.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kmokidd",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.0.0",
+    "gulp-less": "*",
+    "gulp-sourcemaps": "*",
+    "autoprefixer": "^6.6.0",
+    "gulp-watch-less2": "^2.0.4"
+  }
+}
