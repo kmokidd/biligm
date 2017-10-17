@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 var watch_less = require('gulp-watch-less2');
 
 const file_path = {
-  less: './src/style-*.less',
+  less: './src/**/style-*.less',
   img: './src/img/**/*',
   pub_css: './dist'
 };

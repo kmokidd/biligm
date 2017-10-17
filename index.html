@@ -15,15 +15,17 @@
     window.location = window.location.href+'?r='+Math.random();
     }
     // css缓存
-    document.write('<link rel="stylesheet" href="./dist/style-index.css?r='+Math.random()+'">');
+    document.write('<link rel="stylesheet" href="./dist/style/style-index.css?r='+Math.random()+'">');
   </script>
 </head>
 <body>
   <section class="bgm">
     <!-- 搜索栏 -->
     <section class="bgm__search">
-      <input type="text" class="bgm__search__bar" placeholder="av号或关键字">
-      <button class="btn btn--active">搜索</button>
+      <input type="text" class="bgm__search__bar" placeholder="av号或关键字" id="js-search-field">
+      <button class="btn btn--search icon icon--search" id="js-search">
+        <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+      </button>
     </section>
 
     <!-- 结果展示 & 播放 -->
@@ -32,25 +34,65 @@
 
   <script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-1.10.2.min.js"></script>
   <script>
-    (function(){
-      const biliHost = "https://api.imjad.cn/bilibili/v2/?ts=" + new Date().getTime();
+    const HOST_bili = 'https://api.imjad.cn/bilibili/v2/?ts=' + new Date().getTime();
+    const HOST_player = 'https://api.prprpr.me/dplayer/bilibili';
+    const API_bilibili = {
+      search: 'search',
+      space: 'space',
+      favlist: 'favlist'
+    };
 
-      $.ajax({
-        url: biliHost,
+    const Func = {
+      getSearchResult: function(keywords, page_num){
+        page_num = 2 || page_num;
+
+        $.ajax({
+        url: HOST_bili,
         cache: false,
         data: {
-          get: 'search',
-          fid: 79295421,
-          vmid: 13822847,
-          page: 5
+          get: API_bilibili.search,
+          keyword: keywords,
+          page: page_num
         },
         // dataType: "jsonp",
         jsonp: "callback",
-        success: function (data) {
-            console.log(data)
-        }
+          success: function (data) {
+              console.log(data)
+          }
+        })
+      }
+    }
+
+
+    window.onload = function(){
+      const $search = document.querySelector('#js-search');
+
+      $search.addEventListener('click', function(){
+        let keywords = document.querySelector('#js-search-field').value;
+
+        Func.getSearchResult(keywords);
       })
-    })();
+    }
+
+    // (function(){
+    //   const biliHost = "https://api.imjad.cn/bilibili/v2/?ts=" + new Date().getTime();
+
+    //   $.ajax({
+    //     url: biliHost,
+    //     cache: false,
+    //     data: {
+    //       get: 'search',
+    //       fid: 79295421,
+    //       vmid: 13822847,
+    //       page: 5
+    //     },
+    //     // dataType: "jsonp",
+    //     jsonp: "callback",
+    //     success: function (data) {
+    //         console.log(data)
+    //     }
+    //   })
+    // })();
   </script>
 </body>
 </html>
