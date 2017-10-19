@@ -29,7 +29,33 @@
     </section>
 
     <!-- 结果展示 & 播放 -->
-    <section class="bgm__result"></section>
+    <section class="bgm__result">
+      <!-- 加载动画 -->
+      <section class="bgm__loading">
+        <b class="bgm__loading__node"></b>
+      </section>
+
+      <!-- 结果列表 -->
+      <ul class="cont">
+        <li class="cont__item">
+          <b class="cont__item__cover" style="background-image:url()">
+            <i class="icon icon--play"></i>
+          </b>
+          <section class="cont__item__info">
+            <h2 class="cont__item__title">{{视频名}}</h2>
+            <section class="cont__item__subinfo">
+              <span class="cont__item__subinfo__txt">{{弹幕数量}}</span>
+              <span class="cont__item__subinfo__txt">{{播放次数}}</span>
+            </section>
+            <section class="cont__item__subinfo">
+              <span class="cont__item__subinfo__txt">{{up主}}</span>
+              <span class="cont__item__subinfo__txt">{{上传日期}}</span>
+            </section>
+          </section>
+        </li>
+      </ul>
+
+    </section>
   </section>
 
   <script src="http://qzonestyle.gtimg.cn/qz-act/js/jquery-1.10.2.min.js"></script>
