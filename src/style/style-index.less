@@ -63,7 +63,7 @@ body {
 }
 
 .bgm {
-  height: 100vh;
+  min-height: 100vh;
   padding: .1rem .08rem 0;
 
   display: flex;
@@ -161,6 +161,9 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: .06rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
     &__cover {
       display: block;
       width: 1rem;

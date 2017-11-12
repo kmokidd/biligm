@@ -65,10 +65,25 @@
     const API_bilibili = {
       search: 'search',
       space: 'space',
-      favlist: 'favlist'
+      favlist: 'favlist',
+      rmd: 'recommend'
     };
 
     const Func = {
+      getRmd: function(){
+        $.ajax({
+        url: HOST_bili,
+        cache: false,
+        data: {
+          get: API_bilibili.rmd
+        },
+        // dataType: "jsonp",
+        jsonp: "callback",
+          success: function (data) {
+              console.log(data)
+          }
+        })
+      },
       getSearchResult: function(keywords, page_num){
         page_num = 2 || page_num;
 
@@ -91,13 +106,17 @@
 
 
     window.onload = function(){
+      // 特别推荐，也不知道是什么，默认加载吧
+      Func.getRmd();
+
+
       const $search = document.querySelector('#js-search');
 
       $search.addEventListener('click', function(){
         let keywords = document.querySelector('#js-search-field').value;
 
         Func.getSearchResult(keywords);
-      })
+      });
     }
 
     // (function(){
