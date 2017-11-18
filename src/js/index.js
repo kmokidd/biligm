@@ -1,30 +1,44 @@
 import * as CONFIG from './config.js';
 
 const vmid = 13822847;
+let pageNum = 2;
 
 const app = new Vue({
   el: '#app',
   data:{
-    favArray: []
+    favArray: [],
+    style: {
+      hide: false
+    }
   },
   methods: {
-    getSpace: function() {
+    getFavList: function(cb) {
       this.$http.get(CONFIG.hostBili, {params: {
         get: CONFIG.apiBili.space,
         vmid: vmid
       }}).then(response => {
         let res = response.body;
         this.favArray = res.data.favourite.item;
-
         console.log(this.favArray);
+
+        cb();
       }, response => {
         console.log('ERROR: ');
         console.log(response);
       })
+    },
+    showFavListDetail: function(){
+      // favList moved out
+      // listCont comes in
+    },
+    playProg: function(){
+      // 多 P 处理
     }
   },
   created: function(){
     console.log('before create ------------');
-    this.getSpace();
+    this.getFavList(()=>{
+      this.style.hide = true;
+    });
   }
 })

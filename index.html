@@ -33,15 +33,16 @@
     <!-- 结果展示 & 播放 -->
     <section class="bgm__result">
       <!-- 加载动画 -->
-      <section class="bgm__loading">
+      <section class="bgm__loading" :class='{hide: style.hide}'>
         <b class="bgm__loading__node"></b>
       </section>
 
       <!-- 结果列表 -->
       <ul class="cont">
         <li class="cont__item" v-for="fav in favArray">
-          <b v-if="fav.cover" class="cont__item__cover" :style="{backgroundImage: 'url(' + fav.cover[0].pic +')'}"></b>
-          <b v-else class="cont__item__cover"><i class="icon icon--play"></i></b>
+          <!-- <b v-if="fav.cover" class="cont__item__cover" :style="{backgroundImage: 'url(' + fav.cover[0].pic +')'}"></b> -->
+          <!-- <b v-else class="cont__item__cover"><i class="icon icon--play"></i></b> -->
+          <b class="cont__item__cover"><i class="icon icon--play"></i></b>
           <section class="cont__item__info">
             <h2 class="cont__item__title">{{fav.name}}</h2>
             <section class="cont__item__subinfo">
