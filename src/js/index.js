@@ -8,7 +8,7 @@ const app = new Vue({
   data:{
     favArray: [],
     style: {
-      hide: false
+      hide: true
     }
   },
   methods: {
@@ -35,10 +35,13 @@ const app = new Vue({
       // 多 P 处理
     }
   },
+  beforeCreate:function() {
+
+  },
   created: function(){
     console.log('before create ------------');
     this.getFavList(()=>{
-      this.style.hide = true;
+      this.style.hide = false;
     });
   }
 })
