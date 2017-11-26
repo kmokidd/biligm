@@ -51,6 +51,11 @@ input, .btn {
       fill: #fff;
     }
   }
+  &--nav--back {
+    width: 0.3rem;
+    height: 0.3rem;
+    background-image: url(../../img/icon-nav-back.svg);
+  }
 }
 
 html {
@@ -68,7 +73,8 @@ body {
 
 .bgm {
   min-height: 100vh;
-  padding: .1rem .08rem 0;
+  padding-top: 0.08rem;
+  // padding: .1rem .08rem 0;
 
   display: flex;
   flex-direction: column;
@@ -77,6 +83,7 @@ body {
   // 搜索栏
   &__search {
     display: flex;
+    padding: 0 .1rem;
     
     @size: .56rem;
     &__bar {
@@ -107,8 +114,19 @@ body {
   &__result {
     flex: 1;
     margin-top: .2rem;
+    width: 100vw;
+    overflow: hidden;;
   }
 
+  // 导航
+  &__nav {
+    .btn {
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
   // 加载动画
   &__loading {
     padding: .1rem 0;
@@ -162,10 +180,19 @@ body {
       }
     }
   }
+
+  &__cont {
+    display: flex;
+    transition: transform 500ms ease-in-out;
+  }
 }
 
 // 左图右文，点击播放
 .cont {
+  width: 100vw;
+  flex-shrink: 0;
+  padding: 0 .1rem;
+  box-sizing: border-box;
   line-height: 1.3;
   &__item {
     display: flex;
@@ -193,6 +220,12 @@ body {
       background-clip: content-box;
       background-size: cover;
       background-repeat: no-repeat;
+      &--single {
+        background-image: url(../../img/icon-single.svg)
+      }
+      &--multiple {
+        background-image: url(../../img/icon-multiple.svg)
+      }
     }
     &__info {
       min-width: 0;
@@ -212,8 +245,13 @@ body {
       }
 
       &__txt {
+        display: block;
+        margin-bottom: 0.05rem;
         font-size: 12px;
         color: #aaa;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }
